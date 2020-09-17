@@ -27,7 +27,7 @@ def create_spritesheet(image, singleRow):
     pdb.gimp_selection_none(image)
 
     # Layers are in the reverse order we want them so start at the end of the list and work backwards
-    layerIndex = (numLayers - 1)
+    layerIndex = 0
 
     # Loop over our spritesheet grid filling each one row at a time
     for y in xrange(0, numRows):
@@ -52,8 +52,8 @@ def create_spritesheet(image, singleRow):
             pdb.gimp_layer_translate(floatingLayer, xOffset, yOffset)
 
             # Move to the next layer, unless we're all done in which case exit!
-            layerIndex = (layerIndex - 1)
-            if layerIndex < 0:
+            layerIndex = layerIndex + 1
+            if layerIndex >= numLayers:
                 break;
 
     # Merge the last floating layer into our final 'Spritesheet' layer
