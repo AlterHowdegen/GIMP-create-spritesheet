@@ -9,6 +9,7 @@ def create_spritesheet(image, singleRow):
     # Grab all the layers from the original image, each one of which will become an animation frame
     layers = image.layers
     numLayers = len(layers)
+    numLayersForIteration = numLayers - 1
 
     # Work out how many rows and columns we need for each of our layers/animation frames
     numRows = 1 if singleRow else int(math.ceil(math.sqrt(numLayers)))
@@ -53,7 +54,7 @@ def create_spritesheet(image, singleRow):
 
             # Move to the next layer, unless we're all done in which case exit!
             layerIndex = layerIndex + 1
-            if layerIndex >= numLayers:
+            if layerIndex >= numLayersForIteration:
                 break;
 
     # Merge the last floating layer into our final 'Spritesheet' layer
